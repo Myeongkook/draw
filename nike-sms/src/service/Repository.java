@@ -1,25 +1,27 @@
 package service;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Repository {
-    static String URL = "jdbc:mysql://15.164.131.180:3306/nike";
-    static String USER = "manager";
-    static String PW = "qweqwe1";
+    public final static String URL = "";
+    public final static String USER = "";
+    public final static String PW = "";
 
     public static void main(String[] args) throws SQLException {
         ResultSet rs;
         Connection conn = DriverManager.getConnection(URL, USER, PW);
         System.out.println(conn);
         Statement stmt = conn.createStatement();
-        rs = stmt.executeQuery("select * from draw");
+        rs = stmt.executeQuery("select * from user where is_subscribed = TRUE");
+        List<String> users = new ArrayList<>();
         while (rs.next()){
-            String one = rs.getString(1);
-            String two = rs.getString(2);
-            String three = rs.getString(3);
-            String four = rs.getString(4);
-
-            System.out.println(one + " " + two + " " + three + " " + four);
+            String phone = rs.getString(7);
+            users.add(phone);
+        }
+        for (String user : users) {
+            System.out.println(user);
         }
     }
 }
