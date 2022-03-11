@@ -11,11 +11,11 @@ public class YamlReader {
 
     public static void main(String[] args) throws FileNotFoundException {
         Yaml y = new Yaml();
-        FileReader file = new FileReader("/Users/myeongkook/Documents/DEV/nike/nike-sms/src/resource/properties.yaml");
+        FileReader file = new FileReader("C:\\Users\\Myeongkook Park\\Desktop\\draw\\nike-sms\\src\\main\\resources\\config.yaml");
         Map<String,Object> result = y.load(file);
         Map<String, Object> shortURL = (Map<String, Object>) result.get("shortURL");
-        String ID = (String) shortURL.get("ClientID");
-        String secert = (String) shortURL.get("ClientSecret");
-        System.out.println(ID + " " + secert);
+        String ID = (String) shortURL.get("ID");
+        String secret = (String) shortURL.get("PW");
+        System.out.println(ID + " " + secret);
     }
 }
