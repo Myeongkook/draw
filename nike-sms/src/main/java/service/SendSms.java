@@ -41,7 +41,7 @@ public class SendSms {
         return encodeBase64String;
     }
 
-    private void sendSMS(ArrayList<String> phones){
+    private void sendSMS(){
         String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
         String requestUrl= "/sms/v2/services/";                   		// 요청 URL
         String requestUrlType = "/messages";                      		// 요청 URL
@@ -58,15 +58,13 @@ public class SendSms {
         JSONObject toJson = new JSONObject();
         JSONArray  toArr = new JSONArray();
 
-        for (String phone: phones) {
-            toJson.put("to", phone);
-        }
+        toJson.put("to", "");
         toArr.put(toJson);
 
         bodyJson.put("type","SMS");     					// Madantory, 메시지 Type (SMS | LMS | MMS), (소문자 가능)	        // Optional, 국가 전화번호, (default: 82)
         bodyJson.put("content","");	                // Mandatory(필수), 기본 메시지 내용, SMS: 최대 80byte, LMS, MMS: 최대 2000byte
         bodyJson.put("messages", toArr);					// Mandatory(필수), 아래 항목들 참조 (messages.XXX), 최대 1,000개
-
+        bodyJson.put("from", "");
         String body = bodyJson.toString();
 
         System.out.println(body);
@@ -111,13 +109,5 @@ public class SendSms {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-
-
-
-    public static void main(String[] args){
-        //SendSms sendSms = new SendSms();
-        //sendSms.sendSMS();
     }
 }
