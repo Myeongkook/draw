@@ -24,8 +24,8 @@ def crawling():
 
 def Insert_DB(result):
     for res in result:
-        connect = pymysql.Connect(host='15.164.131.180', port=3306,
-                                  password="qweqwe1", user="manager", db="nike",
+        connect = pymysql.Connect(host='', port=,
+                                  password="", user="", db="",
                                   charset="utf8")
         strip = res[0].strip("\n").split("\n")
         product_name = strip[0]
