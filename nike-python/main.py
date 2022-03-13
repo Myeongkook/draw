@@ -5,8 +5,12 @@ import pymysql
 
 
 def crawling():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     URL = "https://www.nike.com/kr/launch/?type=upcoming"
-    driver = webdriver.Chrome(r'C:\Users\Myeongkook Park\PycharmProjects\Nike\nike-python\webdriver\chromedriver-win.exe')
+    driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/webdriver/chromedriver', options=options)
     driver.get(URL)
     driver.implicitly_wait(10)
     soup = BeautifulSoup(driver.page_source, "html.parser")
@@ -20,8 +24,8 @@ def crawling():
 
 def Insert_DB(result):
     for res in result:
-        connect = pymysql.Connect(host='address', port=3306,
-                                  password="password", user="ID", db="nike",
+        connect = pymysql.Connect(host='15.164.131.180', port=3306,
+                                  password="qweqwe1", user="manager", db="nike",
                                   charset="utf8")
         strip = res[0].strip("\n").split("\n")
         product_name = strip[0]
