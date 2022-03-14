@@ -12,7 +12,7 @@ import java.util.Map;
 public class YamlReader {
 
     public static Object getObject(String objectKey) throws FileNotFoundException{
-        Map<String, Object> load = new Yaml().load(new FileReader("/Users/myeongkook/Documents/DEV/draw/nike-sms/src/main/resources/config.yaml"));
+        Map<String, Object> load = new Yaml().load(new FileReader("/home/ubuntu/nike/sms/config.yaml"));
         Map<String, String> result = (Map<String, String>) load.get(objectKey);
         switch (objectKey) {
             case "SMS":
