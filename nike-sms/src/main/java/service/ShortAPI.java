@@ -1,6 +1,7 @@
 package service;
 
 import dto.ShortDto;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -13,15 +14,14 @@ public class ShortAPI {
     public static String getShortUrl (String originalUrl) throws FileNotFoundException {
         String clientId = "YOUR_CLIENT_ID"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "YOUR_CLIENT_SECRET"; //애플리케이션 클라이언트 시크릿값"
-        String apiURL = "https://openapi.naver.com/v1/util/shorturl?url=" + originalUrl;
+        String apiURL = "https://openapi.naver.com/v1/util/shorturl?url=" + "nike.com" +originalUrl;
         ShortDto shortURL = (ShortDto) YamlReader.getObject("shortURL");
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", shortURL.getClientId());
         requestHeaders.put("X-Naver-Client-Secret", shortURL.getClientSecret());
         String responseBody = get(apiURL,requestHeaders);
-
-        System.out.println(responseBody);
-        return responseBody;
+        JSONObject json = new JSONObject(responseBody);
+        return json.getJSONObject("result").getString("url");
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){
