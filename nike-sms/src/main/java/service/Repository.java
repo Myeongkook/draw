@@ -1,27 +1,26 @@
 package service;
 
+import dto.DbDto;
+
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
-    public final static String URL = "";
-    public final static String USER = "";
-    public final static String PW = "";
 
-    public static void main(String[] args) throws SQLException {
+    public static List<String> findUsers() throws SQLException, FileNotFoundException {
+        DbDto db = (DbDto) YamlReader.getObject("DB");
         ResultSet rs;
-        Connection conn = DriverManager.getConnection(URL, USER, PW);
+        Connection conn = DriverManager.getConnection(db.getUrl(), db.getUser(), db.getPw());
         System.out.println(conn);
         Statement stmt = conn.createStatement();
         rs = stmt.executeQuery("select * from user where is_subscribed = TRUE");
         List<String> users = new ArrayList<>();
-        while (rs.next()){
+        while (rs.next()) {
             String phone = rs.getString(7);
             users.add(phone);
         }
-        for (String user : users) {
-            System.out.println(user);
-        }
+        return users;
     }
 }

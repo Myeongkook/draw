@@ -1,5 +1,6 @@
 package service;
 
+import dto.SmsDto;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,11 +13,12 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
 
 public class SendAPI {
 
 
-    private String makeSignature(String url, String timestamp, String method, String accessKey, String secretKey) throws NoSuchAlgorithmException, InvalidKeyException {
+    private static String makeSignature(String url, String timestamp, String method, String accessKey, String secretKey) throws NoSuchAlgorithmException, InvalidKeyException {
         String space = " ";
         String newLine = "\n";
         String message = new StringBuilder()
@@ -40,13 +42,20 @@ public class SendAPI {
         return encodeBase64String;
     }
 
-    private void sendSMS(){
+    public static void sendSMS(List<String>users, String content){
+        SmsDto sms = null;
+        try{
+            sms = (SmsDto) YamlReader.getObject("SMS");
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
         String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
         String requestUrl= "/sms/v2/services/";                   		// 요청 URL
         String requestUrlType = "/messages";                      		// 요청 URL
-        String accessKey = "";                     	// 네이버 클라우드 플랫폼 회원에게 발급되는 개인 인증키
-        String secretKey = "";  // 2차 인증을 위해 서비스마다 할당되는 service secret key
-        String serviceId = "";       // 프로젝트에 할당된 SMS 서비스 ID
+        assert sms != null;
+        String accessKey = sms.getAccessKeyId();               	// 네이버 클라우드 플랫폼 회원에게 발급되는 개인 인증키
+        String secretKey = sms.getSecretKey();  // 2차 인증을 위해 서비스마다 할당되는 service secret key
+        String serviceId = sms.getServiceid();       // 프로젝트에 할당된 SMS 서비스 ID
         String method = "POST";											// 요청 method
         String timestamp = Long.toString(System.currentTimeMillis()); 	// current timestamp (epoch)
         requestUrl += serviceId + requestUrlType;
@@ -57,13 +66,16 @@ public class SendAPI {
         JSONObject toJson = new JSONObject();
         JSONArray  toArr = new JSONArray();
 
-        toJson.put("to", "");
-        toArr.put(toJson);
+        for (String user : users) {
+            toJson.put("to", user);
+            toArr.put(toJson);
+        }
+
 
         bodyJson.put("type","SMS");     					// Madantory, 메시지 Type (SMS | LMS | MMS), (소문자 가능)	        // Optional, 국가 전화번호, (default: 82)
-        bodyJson.put("content","");	                // Mandatory(필수), 기본 메시지 내용, SMS: 최대 80byte, LMS, MMS: 최대 2000byte
+        bodyJson.put("content", content);	                // Mandatory(필수), 기본 메시지 내용, SMS: 최대 80byte, LMS, MMS: 최대 2000byte
         bodyJson.put("messages", toArr);					// Mandatory(필수), 아래 항목들 참조 (messages.XXX), 최대 1,000개
-        bodyJson.put("from", "");
+        bodyJson.put("from", "01084898972");
         String body = bodyJson.toString();
 
         System.out.println(body);
