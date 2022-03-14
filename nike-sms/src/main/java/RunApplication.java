@@ -10,6 +10,7 @@ import java.util.List;
 
 public class RunApplication {
     public static void main(String[] args) throws SQLException, FileNotFoundException {
+        Repository.insertCrontabLog();
         List<DrawDto> draws = Repository.findDraws();
         if(draws.size()>0){
             List<String> users = Repository.findUsers();

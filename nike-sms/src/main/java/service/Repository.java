@@ -41,7 +41,6 @@ public class Repository {
             String product = rs.getString("product");
             result.add(new DrawDto(product,date,url));
         }
-
         return result;
     }
 
@@ -51,5 +50,11 @@ public class Repository {
         pstmt.setString(1,url);
         pstmt.executeUpdate();
 
+    }
+
+    public static void insertCrontabLog() throws SQLException, FileNotFoundException {
+        Connection conn = getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("insert into crontab_log (runtime_timestamp) VALUES (NOW())");
+        pstmt.executeUpdate();
     }
 }
