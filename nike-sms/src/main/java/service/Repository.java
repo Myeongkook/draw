@@ -20,6 +20,8 @@ public class Repository {
             String phone = rs.getString(7);
             users.add(phone);
         }
+        stmt.close();
+        conn.close();
         return users;
     }
 
@@ -41,6 +43,8 @@ public class Repository {
             String product = rs.getString("product");
             result.add(new DrawDto(product,date,url));
         }
+        stmt.close();
+        conn.close();
         return result;
     }
 
@@ -49,6 +53,8 @@ public class Repository {
         PreparedStatement pstmt = conn.prepareStatement("update draw set is_sent=TRUE where url=?");
         pstmt.setString(1,url);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
 
     }
 
@@ -56,5 +62,7 @@ public class Repository {
         Connection conn = getConnection();
         PreparedStatement pstmt = conn.prepareStatement("insert into crontab_log (runtime_timestamp) VALUES (NOW())");
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }
