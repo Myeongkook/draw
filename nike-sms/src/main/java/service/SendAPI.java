@@ -63,12 +63,9 @@ public class SendAPI {
 
         // JSON 을 활용한 body data 생성
         JSONObject bodyJson = new JSONObject();
-        JSONObject toJson = new JSONObject();
         JSONArray  toArr = new JSONArray();
-
         for (String user : users) {
-            toJson.put("to", user);
-            toArr.put(toJson);
+            toArr.put(new JSONObject().put("to", user));
         }
 
 
