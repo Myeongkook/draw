@@ -206,3 +206,18 @@ a:active {
   height: 37px;
   font-weight: bold;
 }
+
+.Login .footer {
+  position: absolute;
+  bottom: 100px;
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all ease 1s 0s;
+}
+
+.Login .footer.clicked {
+  color: rgba(0, 0, 0, 1);
+  transition: all ease 0.2s 0s;
+}

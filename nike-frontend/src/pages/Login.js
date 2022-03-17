@@ -1,13 +1,21 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { AiFillCheckCircle } from 'react-icons/ai';
 
 function Login() {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
   const setValueHandler = (e) => {
     e.target.name === 'id'
       ? setUserId(e.target.value)
       : setUserPw(e.target.value);
+  };
+
+  const alertTest = (e) => {
+    e.target.classList.toggle('clicked');
   };
 
   const callLoginApi = (e) => {
@@ -22,6 +30,7 @@ function Login() {
     }).then((res) => {
       if (res.data) {
         window.alert('로그인 성공!');
+        navigate('/home');
       } else {
         window.alert('올바르지 않는 요청입니다.');
       }
@@ -36,6 +45,7 @@ function Login() {
           name="id"
           value={userId}
           type="text"
+          autoComplete="none"
           onChange={setValueHandler}
         ></input>
         <input
@@ -53,6 +63,9 @@ function Login() {
         >
           login
         </button>
+        <div className="footer" onClick={alertTest}>
+          <AiOutlineCheckCircle /> remember-me
+        </div>
       </div>
     </div>
   );
