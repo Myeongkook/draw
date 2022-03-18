@@ -148,6 +148,10 @@ a:active {
 ::placeholder {
   font-size: 0.825rem;
 }
+.App {
+  height: 100vh;
+  width: 100%;
+}
 
 .Login {
   background-color: #2c59b7;
@@ -220,4 +224,17 @@ a:active {
 .Login .footer.clicked {
   color: rgba(0, 0, 0, 1);
   transition: all ease 0.2s 0s;
+}
+
+.App .Home {
+  height: 92%;
+  width: 100%;
+  background-color: white;
+}
+
+.App .Home .content {
+  margin-top: 100px;
+  width: 100%;
+  height: 90%;
+  background-color: pink;
 }
