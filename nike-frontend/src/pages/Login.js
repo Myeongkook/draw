@@ -29,7 +29,6 @@ function Login() {
       },
     }).then((res) => {
       if (res.data) {
-        window.alert('로그인 성공!');
         navigate('/home');
       } else {
         window.alert('올바르지 않는 요청입니다.');
