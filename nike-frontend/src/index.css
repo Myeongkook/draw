@@ -149,6 +149,7 @@ a:active {
   font-size: 0.825rem;
 }
 .App {
+  position: relative;
   height: 100vh;
   width: 100%;
 }
@@ -230,6 +231,7 @@ a:active {
   height: 100vh;
   width: 100%;
   background-color: white;
+  position: relative;
 }
 
 .App .Home .content {
@@ -240,9 +242,9 @@ a:active {
 }
 
 .App .Home .header {
-  position: fixed;
-  height: 20px;
-  left: 50px;
-  width: 100%;
+  text-align: right;
+  margin-right: 30px;
   font-size: 25px;
+  position: relative;
+  top: 35px;
 }
