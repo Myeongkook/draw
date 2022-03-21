@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavigatorBar from '../components/NavigatorBar';
 import { GrMenu } from 'react-icons/gr';
-import draw from '../components/draw';
-import mypage from '../components/mypage';
 
 const Home = () => {
   return (

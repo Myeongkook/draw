@@ -211,6 +211,22 @@ a:active {
   height: 37px;
   font-weight: bold;
 }
+.Login .header {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.Login .header input {
+  width: 80px;
+  padding: 5px 5px;
+  outline: 0;
+  background: white;
+  border-radius: 25px;
+  border: none;
+  font-size: 20px;
+  height: 30px;
+  text-align: center;
+}
 
 .Login .footer {
   position: absolute;

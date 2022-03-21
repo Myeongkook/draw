@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { AiFillCheckCircle } from 'react-icons/ai';
 
 function Login() {
   const navigate = useNavigate();
@@ -12,6 +11,10 @@ function Login() {
     e.target.name === 'id'
       ? setUserId(e.target.value)
       : setUserPw(e.target.value);
+  };
+
+  const createAccount = () => {
+    navigate('/join');
   };
 
   const alertTest = (e) => {
@@ -37,6 +40,9 @@ function Login() {
   };
   return (
     <div className="Login">
+      <div className="header">
+        <input type="button" value="Create" onClick={createAccount}></input>
+      </div>
       <div className="logo">Untitled App</div>
       <div className="login-form">
         <input
