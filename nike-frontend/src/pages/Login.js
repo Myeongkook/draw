@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 function Login() {
@@ -13,19 +13,16 @@ function Login() {
       : setUserPw(e.target.value);
   };
 
-  const createAccount = () => {
-    navigate('/join');
-  };
-
   const alertTest = (e) => {
     e.target.classList.toggle('clicked');
   };
 
   const callLoginApi = (e) => {
     e.preventDefault();
+    navigate('/home');
     axios({
       method: 'POST',
-      url: 'http://127.0.0.1:8080/api/login',
+      url: 'http://localhost:8080/api/login',
       data: {
         id: userId,
         pw: userPw,
@@ -41,7 +38,7 @@ function Login() {
   return (
     <div className="Login">
       <div className="header">
-        <input type="button" value="Create" onClick={createAccount}></input>
+        <Link to="/join">Create</Link> | <Link to="/help">Help</Link>
       </div>
       <div className="logo">Untitled App</div>
       <div className="login-form">

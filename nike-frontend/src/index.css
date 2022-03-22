@@ -214,18 +214,11 @@ a:active {
 .Login .header {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
+  color: white;
 }
-.Login .header input {
-  width: 80px;
-  padding: 5px 5px;
-  outline: 0;
-  background: white;
-  border-radius: 25px;
-  border: none;
-  font-size: 20px;
-  height: 30px;
-  text-align: center;
+.Login .header a {
+  display: inline;
 }
 
 .Login .footer {
@@ -251,7 +244,7 @@ a:active {
 }
 
 .App .Home .content {
-  margin-top: 50px;
+  margin-top: 30px;
   width: 100%;
   height: 90%;
   background-color: whitesmoke;

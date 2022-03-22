@@ -1,11 +1,12 @@
 import React from 'react';
 import '../css/Join.css';
+import { Link } from 'react-router-dom';
 
 const Join = () => {
   return (
     <div className="Join">
       <div className="header">
-        <input type="button" value="Back" onClick={console.log('back')}></input>
+        <Link to="/">Home</Link> | <Link to="/help">Help</Link>
       </div>
       <div className="logo">Join</div>
       <div className="form">

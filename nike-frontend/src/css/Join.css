@@ -11,18 +11,12 @@
 .Join .header {
   position: absolute;
   top: 15px;
-  left: 10px;
+  right: 10px;
+  color: white;
 }
-.Join .header input {
-  width: 80px;
-  padding: 5px 5px;
-  outline: 0;
-  background: white;
-  border-radius: 25px;
-  border: none;
-  font-size: 20px;
-  height: 30px;
-  text-align: center;
+
+.Join .header a {
+  display: inline;
 }
 
 .Join .logo {
