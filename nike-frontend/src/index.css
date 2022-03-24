@@ -136,6 +136,7 @@ button {
   background-color: transparent;
 }
 a {
+  color: white;
   text-decoration: none;
   outline: none;
   display: block;
@@ -146,11 +147,6 @@ a:active {
 }
 ::placeholder {
   font-size: 0.825rem;
-}
-.App {
-  position: relative;
-  height: 100vh;
-  width: 100%;
 }
 
 .Login {
@@ -215,6 +211,7 @@ a:active {
   top: 15px;
   right: 10px;
   color: white;
+  font-size: 15px;
 }
 .Login .header a {
   display: inline;
@@ -235,21 +232,33 @@ a:active {
   transition: all ease 0.2s 0s;
 }
 
-.App .Home {
+.App {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.App .Layout {
+  height: 100vh;
+  width: 100%;
+}
+
+.App .Layout .Home {
   height: 100vh;
   width: 100%;
   background-color: white;
   position: relative;
 }
 
-.App .Home .content {
-  margin-top: 30px;
+.App .Layout .content {
+  position: relative;
   width: 100%;
-  height: 90%;
+  height: 80%;
+  top: 20%;
   background-color: whitesmoke;
+  overflow: auto;
 }
 
-.App .Home .header {
+.Layout .header {
   text-align: right;
   margin-right: 30px;
   font-size: 25px;
@@ -257,17 +266,18 @@ a:active {
   top: 25px;
 }
 
-.App .Home .menu {
-  width: 80%;
-  height: 70vh;
-  background-color: rgba(255, 255, 255, 0.9);
+.Layout .menu {
+  width: 100%;
+  height: 50vh;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-color: pink;
   position: fixed;
-  top: 10%;
-  right: -80%;
+  top: 5%;
+  right: -100%;
   z-index: 1;
-  transition: all ease 1s 0s;
+  transition: all ease 0.5s 0s;
 }
 
-.App .Home .menu.active {
+.Layout .menu.active {
   right: 0px;
 }
