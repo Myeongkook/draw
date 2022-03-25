@@ -1,15 +1,12 @@
 import React from 'react';
-import { GrMenu } from 'react-icons/gr';
 
 const Menu = () => {
-  const activeMenu = () => {
-    document.getElementsByClassName('menu')[0].classList.toggle('active');
-  };
   const unActiveMenu = (e) => {
-    document.getElementsByClassName('menu')[0].classList.remove('active');
+    document.getElementsByClassName('menu')[0].classList.toggle('active');
+    console.log(document.getElementsByClassName('menu')[0].classList);
   };
   return (
-    <div className="menu" onClick={activeMenu}>
+    <div className="menu">
       <button type="button" onClick={unActiveMenu}>
         X
       </button>

@@ -1,13 +1,9 @@
-import Home from './pages/Home.js';
+import Home from './components/Home.js';
 import { Route, Routes } from 'react-router-dom';
-import NavigatorBar from './components/NavigatorBar.js';
-import Menu from './components/Menu.js';
-import { GrMenu } from 'react-icons/gr';
 import Draw from './components/Draw.js';
 import Mypage from './components/Mypage.js';
-import { useState } from 'react';
-import Join from './pages/Join';
-import Login from './pages/Login';
+import Join from './components/Join';
+import Login from './components/Login';
 
 function App() {
   return (

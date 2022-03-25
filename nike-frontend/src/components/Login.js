@@ -29,7 +29,7 @@ function Login() {
       },
     }).then((res) => {
       if (res.data) {
-        navigate('/home');
+        console.log('사이트 작업 중입니다.');
       } else {
         window.alert('올바르지 않는 요청입니다.');
       }
