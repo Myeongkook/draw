@@ -38,7 +38,7 @@ function Login() {
   return (
     <div className="Login">
       <div className="header">
-        <Link to="/join">Create</Link> | <Link to="/help">Help</Link>
+        <Link to="/join">CREATE</Link> | <Link to="/help">HELP</Link>
       </div>
       <div className="logo">Untitled App</div>
       <div className="login-form">

@@ -6,7 +6,7 @@ const Join = () => {
   return (
     <div className="Join">
       <div className="header">
-        <Link to="/">Home</Link> | <Link to="/help">Help</Link>
+        <Link to="/">HOME</Link> | <Link to="/help">HELP</Link>
       </div>
       <div className="logo">Join</div>
       <div className="form">
