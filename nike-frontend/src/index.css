@@ -276,6 +276,7 @@ a:active {
   right: -100%;
   z-index: 1;
   transition: all ease 0.5s 0s;
+  box-shadow: 0px 6px 18px;
 }
 
 .Layout .menu .header {
@@ -318,7 +319,7 @@ a:active {
   margin-bottom: 10px;
   font-weight: 999;
   font-size: 15px;
-  color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.1);
 }
 
 .help {
@@ -380,7 +381,7 @@ a:active {
 .Layout .content .mypage .content svg {
   margin-right: 10px;
   font-size: 30px;
-  line-height: 5px;
+  vertical-align: middle;
 }
 
 .Layout .content .mypage .content li {
@@ -396,6 +397,59 @@ a:active {
 .Layout .content .mypage .content .profile {
   margin-left: 25px;
   margin-bottom: 30px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
+}
+
+.Layout .content .mypage .content .profile svg {
+  font-size: 45px;
+  vertical-align: middle;
+}
+
+.draw .header {
+  text-align: left;
+  font-weight: 900;
+  margin-left: 20px;
+  font-size: 40px;
+  position: relative;
+  top: 10px;
+  color: #2c59b7;
+}
+.draw {
+  width: 100%;
+  height: 100%;
+}
+
+.draw .content {
+  width: 100%;
+  height: 100%;
+}
+.draw .draw-item {
+  margin-top: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.draw .draw-item .img img {
+  box-shadow: 1px 5px 5px;
+  height: 250px;
+  width: 250px;
+  border-radius: 20px;
+}
+
+.draw .draw-item .draw-content {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.draw .draw-item .draw-content button {
+  margin-top: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px 100px 10px 100px;
+  outline: none;
 }
