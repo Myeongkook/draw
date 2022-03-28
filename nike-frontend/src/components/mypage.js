@@ -1,7 +1,9 @@
 import React from 'react';
 import Layout from './Layout';
 import { GrKey } from 'react-icons/gr';
-import { BiShoppingBag, BiMessageCheck, BiLogOut } from 'react-icons/bi';
+import { BiShoppingBag, BiMessageCheck, BiUserCircle } from 'react-icons/bi';
+import { MdLogout } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Mypage = () => {
   return (
@@ -10,6 +12,10 @@ const Mypage = () => {
         <div className="mypage">
           <div className="header">MY PAGE</div>
           <div className="content">
+            <div className="profile">
+              <BiUserCircle />
+              USER
+            </div>
             <ul>
               <li>
                 <BiShoppingBag />
@@ -24,8 +30,10 @@ const Mypage = () => {
                 SUBSCRIPTION
               </li>
               <li>
-                <BiLogOut />
-                LOGOUT
+                <Link to="/">
+                  <MdLogout />
+                  LOGOUT
+                </Link>
               </li>
             </ul>
           </div>

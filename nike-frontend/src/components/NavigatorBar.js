@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/NavigatorBar.css';
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai';
-import { SiNike } from 'react-icons/si';
+import { GiRunningShoe } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const NavigatorBar = (props) => {
@@ -14,7 +14,7 @@ const NavigatorBar = (props) => {
     <div className="navi-bar">
       <Link to="/draw" onClick={changePage}>
         <div className="draw">
-          <SiNike />
+          <GiRunningShoe />
           THE DRAW
         </div>
       </Link>
