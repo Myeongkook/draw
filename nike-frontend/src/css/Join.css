@@ -28,26 +28,35 @@
   text-align: center;
 }
 
-.Join .form {
-  border: 2px solid white;
-  border-radius: 30px;
+.Join .join-form {
+  margin-top: 20px;
   width: 80%;
+  height: 70%;
+  background-color: whitesmoke;
+  border-radius: 20px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  margin-top: 30px;
-  height: 60%;
-  padding-top: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
-.Join .form input {
+.Join .join-form label {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.Join .join-form label input {
+  border: none;
+  width: 100%;
+  background: whitesmoke;
+}
+
+.Join .footer button {
+  margin-top: 20px;
+  color: black;
   outline: none;
   border: none;
-  background: none;
-  border-bottom: 1px solid;
-  border-color: white;
-  margin-bottom: 30px;
-  width: 60%;
-  height: 10%;
-  text-align: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const DrawItem = ({ draw }) => {
   const connectPage = () => {
-    window.open('https://m.nike.com');
+    window.open('https://nike.com');
   };
   const { product_name, img, draw_date } = draw;
   return (
