@@ -33,4 +33,5 @@ public class RestApiController {
         userService.join(user);
         return user.getUserId();
     }
+
 }
