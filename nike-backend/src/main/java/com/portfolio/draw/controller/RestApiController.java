@@ -28,7 +28,7 @@ public class RestApiController {
     @PostMapping(value = "/api/signup")
     public Long save(Member member){
         userService.join(member);
-        return member.getUserId();
+        return member.getMemberId();
     }
 
     @ResponseBody
