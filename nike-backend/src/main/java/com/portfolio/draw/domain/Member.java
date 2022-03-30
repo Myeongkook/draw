@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class User {
+public class Member {
 
     @Id @GeneratedValue
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "member_id")
+    private Long memberId;
     private String id;
     private String pw;
     private String name;

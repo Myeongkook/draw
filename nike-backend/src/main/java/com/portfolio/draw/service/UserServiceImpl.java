@@ -1,6 +1,6 @@
 package com.portfolio.draw.service;
 
-import com.portfolio.draw.domain.User;
+import com.portfolio.draw.domain.Member;
 import com.portfolio.draw.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Long join(User user) {
-        return userRepository.save(user);
+    public Long join(Member member) {
+        return userRepository.save(member);
+    }
+
+    @Override
+    public boolean checkId(String id) {
+        return userRepository.findById(id) != null;
     }
 }

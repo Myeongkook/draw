@@ -1,7 +1,8 @@
 package com.portfolio.draw.repository;
 
-import com.portfolio.draw.domain.User;
+import com.portfolio.draw.domain.Member;
 
 public interface UserRepository {
-    Long save(User user);
+    Long save(Member member);
+    Member findById(String id);
 }

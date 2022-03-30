@@ -1,7 +1,8 @@
 package com.portfolio.draw.service;
 
-import com.portfolio.draw.domain.User;
+import com.portfolio.draw.domain.Member;
 
 public interface UserService {
-    Long join(User user);
+    Long join(Member member);
+    boolean checkId(String id);
 }
