@@ -1,12 +1,12 @@
 package com.portfolio.draw.controller;
 
+import com.portfolio.draw.dto.LoginParam;
 import com.portfolio.draw.domain.Member;
 import com.portfolio.draw.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "*")
 public class RestApiController {
 
 
@@ -17,11 +17,10 @@ public class RestApiController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/api/login")
-    public Member login(String id, String pw){
-        Member member = new Member();
-        member.setName(id);
-        return member;
+    @GetMapping(value = "/api/login")
+    public boolean login(@RequestBody LoginParam loginParam){
+        System.out.println(loginParam.getId()+loginParam.getPw());
+        return true;
     }
 
     @ResponseBody
@@ -32,8 +31,8 @@ public class RestApiController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/api/checkid")
-    public boolean findById(String id){
+    @GetMapping(value = "/api/checkid")
+    public boolean findById(@RequestBody String id){
         return userService.checkId(id);
     }
 
