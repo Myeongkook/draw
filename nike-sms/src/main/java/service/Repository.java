@@ -14,10 +14,10 @@ public class Repository {
         ResultSet rs;
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();
-        rs = stmt.executeQuery("select * from user where is_subscribed = TRUE");
+        rs = stmt.executeQuery("select * from member where is_subscribed = TRUE");
         List<String> users = new ArrayList<>();
         while (rs.next()) {
-            String phone = rs.getString(7);
+            String phone = rs.getString(6);
             users.add(phone);
         }
         stmt.close();
