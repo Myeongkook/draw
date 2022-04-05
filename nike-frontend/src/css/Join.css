@@ -31,31 +31,44 @@
 .Join .join-form {
   margin-top: 20px;
   width: 80%;
-  height: 70%;
+  height: 60%;
   background-color: whitesmoke;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
 .Join .join-form label {
-  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  font-size: 25px;
   width: 100%;
+  font-weight: 600;
 }
 
 .Join .join-form label input {
   border: none;
-  width: 100%;
+  width: 60%;
   background: whitesmoke;
+  outline: none;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+}
+
+.Join .join-form label svg {
+  margin-top: 10px;
+  vertical-align: middle;
+  margin-right: 15px;
 }
 
 .Join .footer button {
-  margin-top: 20px;
+  margin-top: 30px;
   color: black;
   outline: none;
   border: none;
+  font-weight: bold;
   background-color: white;
   padding: 10px 20px;
   border-radius: 25px;

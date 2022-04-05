@@ -1,7 +1,9 @@
 import React from 'react';
 import '../css/Join.css';
 import { Link } from 'react-router-dom';
-
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { BsTag, BsPhone } from 'react-icons/bs';
+import { HiOutlineIdentification } from 'react-icons/hi';
 const Join = () => {
   return (
     <div className="Join">
@@ -11,16 +13,25 @@ const Join = () => {
       <div className="logo">Join</div>
       <div className="join-form">
         <label>
-          ID<input type="text" placeholder="ID를 입력하세요"></input>
+          ID <br />
+          <HiOutlineIdentification />
+          <input type="text" placeholder="ID를 입력하세요"></input>
         </label>
         <label>
-          Password<input type="password" placeholder="PW를 입력하세요"></input>
+          Password
+          <br />
+          <RiLockPasswordLine />
+          <input type="password" placeholder="패스워드를 입력하세요"></input>
         </label>
         <label>
-          Nickname<input type="text" placeholder="닉네임 입력하세요"></input>
+          Nickname <br />
+          <BsTag />
+          <input type="text" placeholder="닉네임 입력하세요"></input>
         </label>
         <label>
-          Phone<input type="tel" placeholder="휴대폰 번호를 입력하세요"></input>
+          Phone <br />
+          <BsPhone />
+          <input type="tel" placeholder="휴대폰 번호를 입력하세요"></input>
         </label>
       </div>
       <div className="footer">
