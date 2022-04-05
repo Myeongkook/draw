@@ -27,7 +27,7 @@
 
 ---
 
-![image](https://user-images.githubusercontent.com/52430916/160985178-e7fe16c6-676e-4811-a5ce-02924317065b.png)]
+![image](https://user-images.githubusercontent.com/52430916/160985178-e7fe16c6-676e-4811-a5ce-02924317065b.png)
 
 <a href="https://www.figma.com/file/aGVbw9b6x6Wh7gQqQwZep1/THE-DRAW?node-id=0%3A1">Figma 바로가기</a>
 
