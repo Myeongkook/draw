@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonRedisRepositoryTest {
     @Autowired
     private PersonRedisRepository repo;
+
     @Test
     @DisplayName(value = "레디스 테스트")
     void test() {
