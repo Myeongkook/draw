@@ -57,7 +57,7 @@ public class SmsUtil {
         return encodeBase64String;
     }
 
-    public void sendSMS(List<String> users, String content){
+    public int sendSMS(List<String> users, String content){
         String hostNameUrl = "https://sens.apigw.ntruss.com";     		// 호스트 URL
         String requestUrl= "/sms/v2/services/";                   		// 요청 URL
         String requestUrlType = "/messages";                  		// 요청 URL
@@ -80,7 +80,6 @@ public class SmsUtil {
         bodyJson.put("from", "01084898972");
         String body = bodyJson.toString();
 
-        System.out.println(body);
 
         try {
             URL url = new URL(apiUrl);
@@ -103,24 +102,11 @@ public class SmsUtil {
 
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            System.out.println("responseCode" +" " + responseCode);
-            if(responseCode == 202) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else { // 에러 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
-
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-
-            System.out.println(response.toString());
+            return responseCode;
 
         } catch (Exception e) {
             System.out.println(e);
+            return 400;
         }
     }
 }

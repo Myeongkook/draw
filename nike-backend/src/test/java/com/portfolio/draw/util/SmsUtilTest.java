@@ -1,5 +1,6 @@
 package com.portfolio.draw.util;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ class SmsUtilTest {
     void sendSMS(){
         List<String> phoneNumbers = new ArrayList<>();
         phoneNumbers.add("01084898972");
-        smsUtil.sendSMS(phoneNumbers, "문자 테스트입니다.");
+        int responseCode = smsUtil.sendSMS(phoneNumbers, "문자 테스트입니다.");
+        Assertions.assertThat(responseCode).isEqualTo(202);
     }
 
 }
