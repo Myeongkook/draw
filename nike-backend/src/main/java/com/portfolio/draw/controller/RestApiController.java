@@ -17,7 +17,7 @@ public class RestApiController {
     }
 
     @ResponseBody
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     public boolean login(@RequestBody LoginParam loginParam){
         System.out.println(loginParam.getId()+loginParam.getPw());
         return true;
