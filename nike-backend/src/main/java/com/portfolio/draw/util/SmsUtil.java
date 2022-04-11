@@ -19,6 +19,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class SmsUtil {
@@ -100,13 +101,14 @@ public class SmsUtil {
             wr.flush();
             wr.close();
 
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            return responseCode;
+            return con.getResponseCode();
 
         } catch (Exception e) {
             System.out.println(e);
             return 400;
         }
     }
+
+
+
 }

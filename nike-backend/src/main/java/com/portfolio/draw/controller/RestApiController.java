@@ -3,6 +3,7 @@ package com.portfolio.draw.controller;
 import com.portfolio.draw.dto.LoginParam;
 import com.portfolio.draw.domain.Member;
 import com.portfolio.draw.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,6 +35,14 @@ public class RestApiController {
     @GetMapping(value = "/checkid/{id}")
     public boolean findById(@PathVariable("id") String id){
         return userService.checkId(id);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/sendsms")
+    public ResponseEntity<String> sendSmsAndSaveRedis(@RequestBody String phone){
+        userService.smsCertification(phone);
+        return ResponseEntity.ok()
+                .body("54454");
     }
 
 }
