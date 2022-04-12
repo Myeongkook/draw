@@ -19,26 +19,22 @@ function Login() {
 
   const callLoginApi = (e) => {
     e.preventDefault();
-
-    axios
-      .post('http://localhost:8080/api/signup', {
-        params: {
-          id: 'tester33',
-          pw: 'passwrd',
-          name: 'mk',
-          salt: null,
-          phone: '010-8489-8888',
-          role: 'USER',
-          isSubscribed: false,
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          console.log('사이트 작업 중입니다.');
-        } else {
-          window.alert('올바르지 않는 요청입니다.');
-        }
-      });
+    console.log(userId);
+    axios({
+      method: 'POST',
+      url: 'http://localhost:8080/api/login',
+      data: {
+        id: userId,
+        pw: userPw,
+      },
+    }).then((res) => {
+      if (res.data) {
+        console.log('사이트 작업 중입니다.');
+        navigate('/home');
+      } else {
+        console.log(res.data);
+      }
+    });
   };
   return (
     <div className="Login">
