@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,5 +27,15 @@ class PersonRedisRepositoryTest {
             Assertions.assertThat(phoneAuth1.getCertificationNumber()).isEqualTo("123456");
         });
         Assertions.assertThat(repo.count()).isOne();
+    }
+
+    @Test
+    @DisplayName(value = "ID 와 value로 hash 찾기")
+    void findByValue(){
+        PhoneAuth phoneAuth = new PhoneAuth("01084898972", "332323");
+        Optional<PhoneAuth> byId = repo.findById(phoneAuth.getId());
+        byId.ifPresent(obj->{
+            Assertions.assertThat(obj.getCertificationNumber()).isEqualTo(phoneAuth.getCertificationNumber());
+        });
     }
 }
