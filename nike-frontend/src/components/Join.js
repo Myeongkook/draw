@@ -9,38 +9,37 @@ import axios from 'axios';
 const Join = () => {
   const [userId, setUserId] = useState('');
   const [userNickname, setUserNickname] = useState('');
+  const [userPhone, setUserPhone] = useState('');
   const [isDuplicated, setIsDuplicated] = useState(false);
 
-  const joinUser = () => {
+  const sendSms = () => {
     axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/signup',
+      url: 'http://localhost:8080/api/sendsms',
       data: {
-        id: userId,
-        pw: null,
-        name: userNickname,
-        salt: null,
-        phone: '010-0000-0000',
-        role: 'USER',
-        isSubscribed: false,
+        phoneNumber: userPhone,
+        certificationNumber: null,
       },
     });
   };
   const setValueHandler = (e) => {
     if (e.target.name === 'id') {
       setUserId(e.target.value);
+      duplicatedChecker(e.target.value);
     } else if (e.target.name === 'nickname') {
       setUserNickname(e.target.value);
+    } else if (e.target.name === 'phone') {
+      setUserPhone(e.target.value);
     }
   };
-  const duplicatedChecker = () => {
+  const duplicatedChecker = (userId) => {
     if (userId.length > 0) {
       axios({
         method: 'GET',
         url: 'http://localhost:8080/api/checkid/' + userId,
       }).then((res) => {
         if (res.data) {
-          setIsDuplicated(true);
+          setIsDuplicated(true); //중복이다.
         } else {
           setIsDuplicated(false);
         }
@@ -63,11 +62,13 @@ const Join = () => {
             placeholder="ID를 입력하세요"
             value={userId}
             onChange={setValueHandler}
-            onKeyUp={duplicatedChecker}
+            autoComplete="off"
           ></input>
           {userId.length > 3 ? (
             isDuplicated ? (
-              <p>사용할 수 없는 아이디입니다 🥲</p>
+              <p style={{ color: 'rgba(255, 0, 0, 0.7)' }}>
+                사용할 수 없는 아이디입니다 🥲
+              </p>
             ) : (
               <p>사용가능한 아이디입니다😃</p>
             )
@@ -94,13 +95,20 @@ const Join = () => {
         <label>
           Phone <br />
           <BsPhone />
-          <input type="tel" placeholder="휴대폰 번호를 입력하세요"></input>
+          <input
+            type="tel"
+            placeholder="휴대폰 번호를 입력하세요"
+            value={userPhone}
+            name="phone"
+            onChange={setValueHandler}
+          ></input>
+          <button type="button" onClick={sendSms}>
+            인증하기
+          </button>
         </label>
       </div>
       <div className="footer">
-        <button type="button" onClick={isSubscribed}>
-          CREATE
-        </button>
+        <button type="button">CREATE</button>
       </div>
     </div>
   );
