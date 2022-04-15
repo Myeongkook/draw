@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Repository
-@Transactional
 public class UserRepositoryImpl implements UserRepository{
 
     @PersistenceContext
@@ -26,6 +25,17 @@ public class UserRepositoryImpl implements UserRepository{
         try {
             return em.createQuery("select u from Member as u where u.id =:name", Member.class)
                     .setParameter("name", id)
+                    .getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    @Override
+    public Member findByNickName(String nickname) {
+        try {
+            return em.createQuery("select m from Member as m where m.name =:nickname", Member.class)
+                    .setParameter("nickname", nickname)
                     .getSingleResult();
         }catch (NoResultException e){
             return null;

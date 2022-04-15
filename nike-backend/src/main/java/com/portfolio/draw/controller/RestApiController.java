@@ -2,6 +2,7 @@ package com.portfolio.draw.controller;
 
 import com.portfolio.draw.dto.LoginParam;
 import com.portfolio.draw.domain.Member;
+import com.portfolio.draw.dto.PhoneCertificationDto;
 import com.portfolio.draw.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +39,25 @@ public class RestApiController {
     }
 
     @ResponseBody
+    @GetMapping(value = "/checknickname/{nickname}")
+    public boolean findByNickName(@PathVariable("nickname") String id){
+        return userService.checkNickName(id);
+    }
+
+    @ResponseBody
     @PostMapping(value = "/sendsms")
-    public ResponseEntity<String> sendSmsAndSaveRedis(@RequestBody String phone){
-        userService.smsCertification(phone);
-        return ResponseEntity.ok()
-                .body("54454");
+    public ResponseEntity<Boolean> sendSmsAndSaveRedis(@RequestBody PhoneCertificationDto dto){
+        if (userService.sendSmsAndSaveRedis(dto.getPhoneNumber().replace("-",""))){
+            return ResponseEntity.ok(true);
+        }else {
+            return ResponseEntity.ok(false);
+        }
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/certification")
+    public ResponseEntity<Boolean> certificationSmsMessage(@RequestBody PhoneCertificationDto dto){
+        return ResponseEntity.ok(true);
     }
 
 }
