@@ -1,16 +1,24 @@
+import selenium.common.exceptions
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from datetime import datetime
+import chromedriver_autoinstaller
 import pymysql
 
 
 def crawling():
+    version = chromedriver_autoinstaller.get_chrome_version().split(".")[0]
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     URL = "https://www.nike.com/kr/launch/?type=upcoming"
-    driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/webdriver/chromedriver', options=options)
+    try:
+        driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/' + version + '/chromedriver', options=options)
+        raise selenium.common.exceptions.SessionNotCreatedException
+    except:
+        chromedriver_autoinstaller.install(True)
+        driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/' + version + '/chromedriver', options=options)
     driver.get(URL)
     driver.implicitly_wait(10)
     soup = BeautifulSoup(driver.page_source, "html.parser")
@@ -46,6 +54,7 @@ def Insert_DB(result):
 
 def main():
     Insert_DB(crawling())
+
 
 
 if __name__ == '__main__':
