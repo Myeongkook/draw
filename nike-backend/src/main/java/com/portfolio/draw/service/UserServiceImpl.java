@@ -8,6 +8,7 @@ import com.portfolio.draw.repository.UserRepository;
 import com.portfolio.draw.util.MessageGenerator;
 import com.portfolio.draw.util.SmsUtil;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,18 +27,21 @@ public class UserServiceImpl implements UserService{
     SmsUtil smsUtil;
     PersonRedisRepository personRedisRepository;
     MessageGenerator messageGenerator;
+    PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, SmsUtil smsUtil, PersonRedisRepository personRedisRepository, MessageGenerator messageGenerator){
+    public UserServiceImpl(UserRepository userRepository, SmsUtil smsUtil, PersonRedisRepository personRedisRepository, MessageGenerator messageGenerator, PasswordEncoder passwordEncoder){
         this.userRepository = userRepository;
         this.smsUtil = smsUtil;
         this.personRedisRepository = personRedisRepository;
         this.messageGenerator = messageGenerator;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     @Transactional
     public Long join(Member member) {
         member.setPhone(member.getPhone().replace("-", ""));
+        member.setPw(passwordEncoder.encode(member.getPw()));
         return userRepository.save(member);
 
     }

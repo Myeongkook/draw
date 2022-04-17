@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,6 +16,9 @@ class UserServiceImplTest {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Test
     @DisplayName(value = "존재하는 아이디를 조회하면 객체를 불러와야한다.")
@@ -27,6 +31,14 @@ class UserServiceImplTest {
     void checkIdFail() {
         Member findCheckTester = userRepository.findById("findCheckTester");
         Assertions.assertThat(findCheckTester).isNull();
+    }
+
+    @Test
+    @DisplayName(value = "패스워드가 평문으로 노출되면 안된다")
+    void passwordEncoding(){
+        String password = "123456";
+        String encode = passwordEncoder.encode(password);
+        Assertions.assertThat(passwordEncoder.matches(password, encode)).isTrue();
     }
 
 
