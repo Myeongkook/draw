@@ -15,7 +15,6 @@ def crawling():
     URL = "https://www.nike.com/kr/launch/?type=upcoming"
     try:
         driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/' + version + '/chromedriver', options=options)
-        raise selenium.common.exceptions.SessionNotCreatedException
     except:
         chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(executable_path=r'/home/ubuntu/nike/' + version + '/chromedriver', options=options)
