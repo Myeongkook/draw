@@ -66,8 +66,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Boolean certificationSmsMessage(PhoneCertificationDto dto) {
-        personRedisRepository.findById(dto.getPhoneNumber());
-        return null;
+        Optional<PhoneAuth> byId = personRedisRepository.findById(dto.getPhoneNumber());
+        if(byId.isPresent()){
+            PhoneAuth phoneAuth = byId.get();
+            return phoneAuth.getCertificationNumber().equals(dto.getCertificationNumber());
+        }
+        return false;
     }
 
 

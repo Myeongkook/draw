@@ -57,7 +57,8 @@ public class RestApiController {
     @ResponseBody
     @PostMapping(value = "/certification")
     public ResponseEntity<Boolean> certificationSmsMessage(@RequestBody PhoneCertificationDto dto){
-        return ResponseEntity.ok(true);
+        Boolean result = userService.certificationSmsMessage(dto);
+        return ResponseEntity.ok(result);
     }
 
 }
