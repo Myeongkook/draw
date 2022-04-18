@@ -17,8 +17,8 @@ public class Member {
     private Long memberId;
     private String id;
     private String pw;
+    @Column(unique = true)
     private String name;
-    private String salt;
     private String phone;
 
     @CreationTimestamp
