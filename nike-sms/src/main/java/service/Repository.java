@@ -17,7 +17,7 @@ public class Repository {
         rs = stmt.executeQuery("select * from member where is_subscribed = TRUE");
         List<String> users = new ArrayList<>();
         while (rs.next()) {
-            String phone = rs.getString(6);
+            String phone = rs.getString(5);
             users.add(phone);
         }
         stmt.close();
