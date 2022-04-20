@@ -42,10 +42,14 @@
 
 .Join .join-form label {
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
   font-size: 15px;
   width: 100%;
   font-weight: 600;
+}
+
+.Join .join-form label input::placeholder{
+  text-align: center;
 }
 
 .Join .join-form label p {
@@ -56,11 +60,13 @@
 }
 
 .Join .join-form label input {
+  text-align: center;
+  font-weight: bold;
   border: none;
   width: 60%;
   background: whitesmoke;
   outline: none;
-  font-size: 20px;
+  font-size: 15px;
   border-bottom: 1px solid black;
   text-transform: lowercase;
 }
@@ -76,6 +82,9 @@
 .Join .join-form button{
   outline: none;
   padding: 5px;
+  color: white;
+  background-color: black;
+  border: none;
 }
 
 .Join .footer button {
