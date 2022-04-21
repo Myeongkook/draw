@@ -33,7 +33,7 @@
 
 ### 🛠️ Project Setting
 
-- Spring Boot
+- Spring Boot - Spring JPA
 - Spring JPA
 - Lombok
 - Mysql
