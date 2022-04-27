@@ -36,7 +36,7 @@ public class Repository {
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();
 //        rs = stmt.executeQuery("select * from draw where is_sent = False and date BETWEEN NOW() and NOW() + INTERVAL 5 MINUTE");
-        rs = stmt.executeQuery("select * from draw where is_sent = False and date >= NOW()");
+        rs = stmt.executeQuery("select * from draw where is_sent = False and date <= NOW()");
         List<DrawDto> result = new ArrayList<>();
         while (rs.next()){
             String url = rs.getString("url");
