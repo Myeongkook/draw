@@ -25,23 +25,23 @@ def crawling():
     result = []
     for i in find_all:
         if "응모" in i.text:
-            result.append([i.text, i.contents[3].attrs['href']])
+            result.append([i.text, i.contents[3].attrs['href'], i.img.get('data-src')])
     return result
 
 
 def Insert_DB(result):
     for res in result:
-        connect = pymysql.Connect(host='', port=,
+        connect = pymysql.Connect(host='', port=3306,
                                   password="", user="", db="",
                                   charset="utf8")
         strip = res[0].strip("\n").split("\n")
         product_name = strip[0]
         replace_date = strip[2].replace("응모 시작", "").replace("오전", "AM").replace("오후", "PM").replace(" ", "")
-        url = res[1]
-        message = res[0]
+        url = 'nike.com' + res[1]
+        img_url = res[2]
         draw_date = datetime.strptime(replace_date, "%m/%d%p%I:%M").replace(year=datetime.now().year).strftime("%Y-%m-%d %H:%M")
-        query = 'INSERT INTO nike.draw(`date`, product, url, message, is_sent)VALUES("{date}", "{product_name}", "{url}", "{message}", 0)'\
-            .format(date=draw_date, product_name=product_name, url=url, message=message)
+        query = 'INSERT INTO nike.draw(`date`, product, url, is_sent, img_url)VALUES("{date}", "{product_name}", "{url}", 0, "{img_url}")'\
+            .format(date=draw_date, product_name=product_name, url=url, img_url=img_url)
         cursor = connect.cursor()
         try:
             cursor.execute(query)
@@ -53,7 +53,6 @@ def Insert_DB(result):
 
 def main():
     Insert_DB(crawling())
-
 
 
 if __name__ == '__main__':
