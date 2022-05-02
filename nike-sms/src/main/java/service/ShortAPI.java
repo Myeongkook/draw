@@ -14,7 +14,7 @@ public class ShortAPI {
     public static String getShortUrl (String originalUrl) throws FileNotFoundException {
         String clientId = "YOUR_CLIENT_ID"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "YOUR_CLIENT_SECRET"; //애플리케이션 클라이언트 시크릿값"
-        String apiURL = "https://openapi.naver.com/v1/util/shorturl?url=" + "nike.com" +originalUrl;
+        String apiURL = "https://openapi.naver.com/v1/util/shorturl?url=" + originalUrl;
         ShortDto shortURL = (ShortDto) YamlReader.getObject("shortURL");
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", shortURL.getClientId());
