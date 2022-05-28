@@ -24,5 +24,7 @@ public class Draw {
     private String message;
     @Column(name = "is_sent")
     private boolean isSent;
+    @Column(name = "img_url")
+    private String imgUrl;
 
 }
