@@ -21,7 +21,6 @@ public class Draw {
     private String product;
     @Column(unique = true)
     private String url;
-    private String message;
     @Column(name = "is_sent")
     private boolean isSent;
     @Column(name = "img_url")
