@@ -1,21 +1,19 @@
 import React from 'react';
 
 const DrawItem = ({ draw }) => {
-  const connectPage = () => {
-    window.open('https://nike.com');
-  };
-  const { product_name, img, draw_date } = draw;
+  // const connectPage = (url) => {
+  //   window.open(url);
+  // };
+  const { product, imgUrl, date, url } = draw;
   return (
     <div className="draw-item">
       <div className="img">
-        <img src={img} alt={product_name} />
+        <img src={imgUrl} alt={product} />
       </div>
       <div className="draw-content">
-        <div className="product">{product_name}</div>
-        <div className="date">{draw_date}</div>
-        <button type="button" onClick={connectPage}>
-          응모
-        </button>
+        <div className="product">{product}</div>
+        <div className="date">{date}</div>
+        <button type="button">응모</button>
       </div>
     </div>
   );

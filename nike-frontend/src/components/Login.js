@@ -20,6 +20,7 @@ function Login() {
   const callLoginApi = (e) => {
     e.preventDefault();
     console.log(userId);
+    navigate('/home');
     axios({
       method: 'POST',
       url: 'http://localhost:8080/api/login',
