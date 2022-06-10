@@ -16,7 +16,7 @@ public class DrawRepositoryImpl implements DrawRepository{
 
     @Override
     public List<Draw> AllDraws() {
-        return em.createQuery("select d from Draw as d",Draw.class)
+        return em.createQuery("select d from Draw as d order by d.date DESC ",Draw.class)
                 .getResultList();
     }
 }
