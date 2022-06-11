@@ -41,4 +41,15 @@ public class UserRepositoryImpl implements UserRepository{
             return null;
         }
     }
+
+    @Override
+    public Member findByPhone(String phoneNumber) {
+        try{
+            return em.createQuery("select m from Member as m where m.phone =:phone", Member.class)
+                    .setParameter("phone", phoneNumber)
+                    .getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
+    }
 }

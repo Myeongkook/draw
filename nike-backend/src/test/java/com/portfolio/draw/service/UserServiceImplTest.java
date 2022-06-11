@@ -20,6 +20,9 @@ class UserServiceImplTest {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    UserService userService;
+
     @Test
     @DisplayName(value = "존재하는 아이디를 조회하면 객체를 불러와야한다.")
     void checkId() {
@@ -42,4 +45,17 @@ class UserServiceImplTest {
     }
 
 
+    @Test
+    @DisplayName(value = "등록된 핸드폰번호로 인증번호를 요청하면 False를 반환하고 저장되지 않는다.")
+    void sendSmsAndSaveRedis(){
+        Boolean aBoolean = userService.sendSmsAndSaveRedis("01084898972");
+        Assertions.assertThat(aBoolean).isFalse();
+    }
+
+    @Test
+    @DisplayName(value = "등록되지않은 핸드폰번호로 인증번호를 요청하면 문자가 발송된다")
+    void sendSmsAndSaveRedis2(){
+        Boolean aBoolean = userService.sendSmsAndSaveRedis("01084898972");
+        Assertions.assertThat(aBoolean).isTrue();
+    }
 }

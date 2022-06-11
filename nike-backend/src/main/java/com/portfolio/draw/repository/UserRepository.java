@@ -6,4 +6,6 @@ public interface UserRepository {
     Long save(Member member);
     Member findById(String id);
     Member findByNickName(String nickname);
+
+    Member findByPhone(String phoneNumber);
 }

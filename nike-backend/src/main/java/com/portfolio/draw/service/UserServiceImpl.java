@@ -58,10 +58,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Boolean sendSmsAndSaveRedis(String phone) {
-        String certificationNumber = messageGenerator.generateValue();
-        smsUtil.sendSMS(new ArrayList<>(List.of(phone)),"The Draw 인증번호 \n[ "+ certificationNumber +" ]");
-        personRedisRepository.save(new PhoneAuth(phone, certificationNumber));
-        return true;
+        if(userRepository.findByPhone(phone) == null){
+            String certificationNumber = messageGenerator.generateValue();
+            smsUtil.sendSMS(new ArrayList<>(List.of(phone)),"The Draw 인증번호 \n[ "+ certificationNumber +" ]");
+            personRedisRepository.save(new PhoneAuth(phone, certificationNumber));
+            return true;
+        }
+        return false;
     }
 
     @Override
